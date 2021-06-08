@@ -1,0 +1,113 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://lib/dance/viewport/2d/Board.gd" type="Script" id=2]
+[ext_resource path="res://lib/dance/viewport/2d/Receptor.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+length = 3.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Accuracy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 2.89, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Viewport2D" type="Node"]
+script = ExtResource( 2 )
+
+[node name="Board" type="Node2D" parent="."]
+
+[node name="Left" type="YSort" parent="Board"]
+
+[node name="Down" type="YSort" parent="Board"]
+position = Vector2( 64, 0 )
+
+[node name="Up" type="YSort" parent="Board"]
+position = Vector2( 128, 0 )
+
+[node name="Right" type="YSort" parent="Board"]
+position = Vector2( 192, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( -80, -80 )
+anchor_mode = 0
+current = true
+
+[node name="Input" type="Node2D" parent="Camera2D"]
+
+[node name="Left" parent="Camera2D/Input" instance=ExtResource( 3 )]
+rect_rotation = 90.0
+key = "dance_left"
+linked_lane = NodePath("../../../Board/Left")
+
+[node name="Down" parent="Camera2D/Input" instance=ExtResource( 3 )]
+margin_left = 64.0
+margin_right = 64.0
+linked_lane = NodePath("../../../Board/Down")
+
+[node name="Up" parent="Camera2D/Input" instance=ExtResource( 3 )]
+margin_left = 128.0
+margin_right = 128.0
+rect_rotation = 180.0
+key = "dance_up"
+linked_lane = NodePath("../../../Board/Up")
+
+[node name="Right" parent="Camera2D/Input" instance=ExtResource( 3 )]
+margin_left = 192.0
+margin_right = 192.0
+rect_rotation = -90.0
+input_pass_on_modal_close_click = false
+key = "dance_right"
+linked_lane = NodePath("../../../Board/Right")
+
+[node name="Control" type="VBoxContainer" parent="Camera2D"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -23.7248
+margin_top = 158.663
+margin_right = 216.275
+margin_bottom = 222.663
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Accuracy" type="Label" parent="Camera2D/Control"]
+margin_right = 239.0
+margin_bottom = 30.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 5
+text = "MISS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Combo" type="Label" parent="Camera2D/Control"]
+margin_top = 34.0
+margin_right = 239.0
+margin_bottom = 64.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+text = "10 Combo"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/Control"]
+anims/show_rating = SubResource( 1 )

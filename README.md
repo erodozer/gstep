@@ -12,3 +12,4 @@ Components in this repo are organized and available for reuse in other projects 
 - [SM File Format](https://github.com/stepmania/stepmania/wiki/sm)
 - [Godot Engine](https://godotengine.org/)
 - [Timing Windows](https://www.stepmania.com/forums/general-questions/show/586)
+- [Lambda Theme](https://github.com/stepmania/stepmania/tree/5_1-new/Themes/default)

@@ -1,0 +1,33 @@
+[gd_scene format=2]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 427.0
+margin_top = 17.3934
+margin_right = 622.0
+margin_bottom = 75.3934
+color = Color( 0, 0, 0, 0.462745 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="."]
+margin_left = 451.331
+margin_top = 25.3486
+margin_right = 542.331
+margin_bottom = 39.3486
+text = "Score: 000000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TIME" type="Label" parent="."]
+margin_left = 451.331
+margin_top = 46.5379
+margin_right = 542.331
+margin_bottom = 60.5379
+text = "TIME"
+__meta__ = {
+"_edit_use_anchors_": false
+}
